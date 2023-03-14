@@ -1,0 +1,24 @@
+{
+  "settings": {
+    "clusterResultsInTopics": true,
+    "showNumberOfResults": true,
+    "showTimeSearchTook": true,
+    "showFilters": true,
+    "showSimilarSearches": true,
+    "hitsPerPage": 20
+  },
+  "design": {
+    "primaryColor": "",
+    "secondaryColor": ""
+  },
+  "literals": {
+    "searchButton": "Search",
+    "filter": "Filter",
+    "suggestion": "Did you mean:",
+    "defaultCategoryName": "Any category",
+    "defaultPublisherName": "Any publisher",
+    "pageTitle": "Find what feels missing",
+    "paginationBackButton": "Back",
+    "paginationNextButton": "Next"
+  }
+}
