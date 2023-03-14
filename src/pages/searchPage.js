@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import SearchField from '../components/searchField/searchField';
 import TopicListElement from '../components/searchResults/topicListElement';
 import SimilarSearchRequests from '../components/searchResults/similarSearchRequests';
+import calculatePageList from '../helpers/calculatePageList';
 
 function SearchPage() {
   const [searchParams] = useSearchParams();
@@ -30,54 +31,21 @@ function SearchPage() {
   }, [publishers, categories]);
   
   useEffect(() => {
-    let p = searchParams.get('page');
-    let contentType = searchParams.get('content_type');
-    let category = searchParams.get('category');
-    let publisher = searchParams.get('publisher');
-
-    if (category || publisher) setShowFilters(true);
-    if (p) {
-      setPage(parseInt(p));
-    } else {
-      p = 1
-      setPage(p);
-    }
-    let q = searchParams.get('q');
-    if (q) {
-      setQuery(q);
-      setContentType(contentType);
-      setCategory(category);
-      setPublisher(publisher);
-      GET(`/search/?q=${q}&count=${HITS_PER_PAGE}&page=${p}${contentType ? '&content_type=' + contentType : ''}${category ? '&category=' + category : ''}${publisher ? '&publisher=' + publisher : ''}`)
-        .then(response => {
-          setResults(response.data);
-        })
-    };
+    setPage(parseInt(searchParams.get('page')), 1);
+    setContentType(searchParams.get('content_type'));
+    setCategory(searchParams.get('category'));
+    setPublisher(searchParams.get('publisher'));
+    setQuery(searchParams.get('q'));
   }, [searchParams]);
 
   useEffect(() => {
-    if (!results) return;
-    let start = 1;
-    let end = 5;
-    if (page < (Math.ceil(results.hitCount / HITS_PER_PAGE) - 2)) {
-      if (page < 3) {
-        if (Math.ceil(results.hitCount / HITS_PER_PAGE) < 5) {
-          end = Math.ceil(results.hitCount / HITS_PER_PAGE);
-        }
-      } else {
-        end = page + 2;
-        start = page - 2;
-      }
-    } else {
-      end = Math.ceil(results.hitCount / HITS_PER_PAGE);
-      if (page < 5) {
-        start = 1;
-      } else {
-        start = end - 5;
-      }
-    }
-    setPageList(Array.from({length: end - start + 1}, (x, i) => i + start))
-  }, [results, page]);
+    GET(`/search/?q=${query}&count=${HITS_PER_PAGE}&page=${page}${contentType ? '&content_type=' + contentType : ''}${category ? '&category=' + category : ''}${publisher ? '&publisher=' + publisher : ''}`)
+      .then(response => {
+        setResults(response.data);
+        setPageList(calculatePageList(page, results.hitCount, HITS_PER_PAGE));
+      })
+  }, [query, page, contentType, category, publisher]);
+
 
   return (
       <div className="container mx-auto pt-16 px-3 mb-40">
