@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
 function Navbar() {
-
   return (
     <div className="bg-white absolute w-full">
       <div className="container mx-auto flex justify-between px-3 py-2">
