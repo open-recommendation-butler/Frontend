@@ -13,7 +13,7 @@ function Navbar() {
           </a>
         </div>
         <div>
-          <a href="https://github.com/open-recommendation-butler" target="_blank">GitHub</a>
+          <a href="https://github.com/open-recommendation-butler" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </div>
     </div>

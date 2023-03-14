@@ -2,7 +2,7 @@ import moment from 'moment';
 
 function ArticleListElement({ article }) {
   return (
-    <a href={article.url} key={article.id} target="_blank">
+    <a href={article.url} key={article.id} target="_blank" rel="noreferrer">
       <div className="my-3 hover:underline">
         <div className="text-sm text-gray-600 flex items-center">
           <div className='shrink text-ellipsis overflow-hidden truncate'>{article.portal} </div>
