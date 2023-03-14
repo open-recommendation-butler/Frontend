@@ -19,7 +19,7 @@ function Footer() {
         </div>
         <div className="font-bold mb-4">Kindly funded and supported by</div>
         <a href="https://www.media-lab.de/de/media-tech-lab" target="_blank" rel="noreferrer">
-          <img className="mx-auto w-20" src={process.env.PUBLIC_URL + '/ML_Logo.webp'} />
+          <img className="mx-auto w-20" src={process.env.PUBLIC_URL + '/ML_Logo.webp'} alt="Media Lab logo" />
         </a>
       </div>
     </div>
