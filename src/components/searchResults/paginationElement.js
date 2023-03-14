@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import calculatePageList from '../../helpers/calculatePageList';
+import Customizations from '../../Customizations';
 
-function PaginationElement({ query, contentType, category, publisher, page, hitCount, HITS_PER_PAGE }) {
+function PaginationElement({ query, contentType, category, publisher, page, results }) {
   const [pageList, setPageList] = useState([]);
 
   useEffect(() => {
-    setPageList(calculatePageList(page, hitCount, HITS_PER_PAGE));
-  }, [page, hitCount, HITS_PER_PAGE])
+    if (!results) return;
+    setPageList(calculatePageList(page, results.hitCount));
+  }, [page, results])
+
+  if (!results) return;
+  if (results.hitCount === 0) return;
 
   return (
     <div className='mt-14'>
@@ -36,8 +41,8 @@ function PaginationElement({ query, contentType, category, publisher, page, hitC
       )}
       <a 
         href={`/search?q=${query}&page=${page + 1}${contentType ? '&content_type=' + contentType : ''}${category ? '&category=' + category : ''}${publisher ? '&publisher=' + publisher : ''}`}
-        onClick={(e) => page === Math.ceil(hitCount / HITS_PER_PAGE) && e.preventDefault()} 
-        className={`rounded-r-full border-y border-r px-3 py-2 font-bold ${page === Math.ceil(hitCount / HITS_PER_PAGE) ? "bg-slate-200 text-gray-500 cursor-not-allowed" : "hover:bg-slate-100 cursor-pointer"}`}
+        onClick={(e) => page === Math.ceil(results.hitCount / Customizations.settings.HitsPerPage) && e.preventDefault()} 
+        className={`rounded-r-full border-y border-r px-3 py-2 font-bold ${page === Math.ceil(results.hitCount / Customizations.settings.HitsPerPage) ? "bg-slate-200 text-gray-500 cursor-not-allowed" : "hover:bg-slate-100 cursor-pointer"}`}
       >Next</a>
     </div>
   )
