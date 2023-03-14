@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { GET } from '../helpers/requests';
 import { useSearchParams } from "react-router-dom";
-import SearchField from '../components/searchField';
-import TopicListElement from '../components/topicListElement';
-import SimilarSearchRequests from '../components/similarSearchRequests';
+import SearchField from '../components/searchField/searchField';
+import TopicListElement from '../components/searchResults/topicListElement';
+import SimilarSearchRequests from '../components/searchResults/similarSearchRequests';
 
 function SearchPage() {
   let [searchParams] = useSearchParams();

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { GET } from '../helpers/requests';
+import { GET } from '../../helpers/requests';
 import { useSearchParams } from "react-router-dom";
 
 function SearchField({ autoFocus=false }) {
