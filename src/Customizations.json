@@ -1,0 +1,29 @@
+{
+  "settings": {
+    "ClusterResultsInTopics": true,
+    "ShowSearchDetails": true,
+    "ShowFilters": true,
+    "ShowSimilarSearches": true,
+    "ShowCorrectionElement": true,
+    "HitsPerPage": 20
+  },
+  "design": {
+    "primaryColor": "#1e293b",
+    "secondaryColor": "#f1f5f9"
+  },
+  "literals": {
+    "SearchButton": "Search",
+    "FilterButton": "Filters",
+    "FilterShowAllButton": "All",
+    "FilterShowArticlesButton": "Articles",
+    "FilterShowPodcastsButton": "Podcasts",
+    "CorrectionElementText": "Did you mean:",
+    "DefaultCategoryName": "Any category",
+    "DefaultPublisherName": "Any publisher",
+    "PageTitle": "Find what feels missing",
+    "PaginationBackButton": "Back",
+    "PaginationNextButton": "Next",
+    "SimilarSearchesTitle": "Similar search requests",
+    "SearchDetailsText": "results in"
+  }
+}
