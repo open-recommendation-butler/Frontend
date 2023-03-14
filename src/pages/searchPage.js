@@ -6,7 +6,7 @@ import TopicListElement from '../components/searchResults/topicListElement';
 import SimilarSearchRequests from '../components/searchResults/similarSearchRequests';
 
 function SearchPage() {
-  let [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [query, setQuery] = useState("");
   const [contentType, setContentType] = useState();
   const [results, setResults] = useState();
@@ -21,19 +21,15 @@ function SearchPage() {
   const [publishers, setPublishers] = useState(["Any publisher"]);
 
   const HITS_PER_PAGE = 20;
-  
-  
-  let search = (query, p, contentType, category, publisher) => {
-    GET(`/search/?q=${query}&count=${HITS_PER_PAGE}&page=${p}${contentType ? '&content_type=' + contentType : ''}${category ? '&category=' + category : ''}${publisher ? '&publisher=' + publisher : ''}`)
-      .then(response => {
-        setResults(response.data)
-      })
-  }
+
   useEffect(() => {
     GET('/portal/')
       .then(response => setPublishers(publishers.concat(response.data)));
     GET('/category/')
       .then(response => setCategores(categories.concat(response.data)));
+  }, [publishers, categories]);
+  
+  useEffect(() => {
     let p = searchParams.get('page');
     let contentType = searchParams.get('content_type');
     let category = searchParams.get('category');
@@ -52,9 +48,12 @@ function SearchPage() {
       setContentType(contentType);
       setCategory(category);
       setPublisher(publisher);
-      search(q, p, contentType, category, publisher);
+      GET(`/search/?q=${q}&count=${HITS_PER_PAGE}&page=${p}${contentType ? '&content_type=' + contentType : ''}${category ? '&category=' + category : ''}${publisher ? '&publisher=' + publisher : ''}`)
+        .then(response => {
+          setResults(response.data);
+        })
     };
-  }, [searchParams, publishers, categories]);
+  }, [searchParams]);
 
   useEffect(() => {
     if (!results) return;
