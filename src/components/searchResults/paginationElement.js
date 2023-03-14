@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import calculatePageList from '../../helpers/calculatePageList';
 
-function PaginationElement(query, contentType, category, publisher, page, hitCount, HITS_PER_PAGE) {
+function PaginationElement({ query, contentType, category, publisher, page, hitCount, HITS_PER_PAGE }) {
   const [pageList, setPageList] = useState([]);
 
   useEffect(() => {
