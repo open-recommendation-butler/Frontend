@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { GET } from '../../helpers/requests';
+import Customizations from '../../Customizations';
 
 function FilterSelection({ query, contentType, category, publisher }) {
   const [showFilters, setShowFilters] = useState(false);
@@ -16,6 +17,8 @@ function FilterSelection({ query, contentType, category, publisher }) {
       .then(response => setCategores(categories.concat(response.data)));
   }, []);
 
+  if (!Customizations.settings.ShowFilters) return;
+
   return (
     <>
       <div className='flex ml-4 mr-2 mt-3 gap-2 border-b border-slate-100'>
@@ -25,7 +28,7 @@ function FilterSelection({ query, contentType, category, publisher }) {
               <circle cx="184" cy="184" r="157" stroke="#475569" strokeWidth="75"/>
               <path d="M298 269L463.5 434.5" stroke="#475569" strokeWidth="75"/>
             </svg>
-            <div className={`${!contentType ? 'font-bold text-slate-600' : ''}`}>All</div>
+            <div className={`${!contentType ? 'font-bold text-slate-600' : ''}`}>{Customizations.literals.FilterShowAllButton}</div>
           </div>
         </a>
         <a href={`/search?q=${query}&content_type=article${category ? '&category=' + category : ''}${publisher ? '&publisher=' + publisher : ''}`}>
@@ -34,7 +37,7 @@ function FilterSelection({ query, contentType, category, publisher }) {
               <rect x="19" y="19" width="362" height="362" rx="90" stroke="#475569" strokeWidth="80"/>
               <path d="M74 123H325.5M74 199H325.5M74 276H325.5" stroke="#475569" strokeWidth="55"/>
             </svg>
-            <div className={`${contentType === 'article' ? 'font-bold text-slate-600' : ''}`}>Articles</div>
+            <div className={`${contentType === 'article' ? 'font-bold text-slate-600' : ''}`}>{Customizations.literals.FilterShowArticlesButton}</div>
           </div>
         </a>
         <a href={`/search?q=${query}&content_type=podcast${category ? '&category=' + category : ''}${publisher ? '&publisher=' + publisher : ''}`}>
@@ -45,14 +48,14 @@ function FilterSelection({ query, contentType, category, publisher }) {
             <path d="M159 314V371" stroke="#475569" strokeWidth="65"/>
             <path d="M53 377H261" stroke="#475569" strokeWidth="65"/>
           </svg>
-            <div className={`${contentType === 'podcast' ? 'font-bold text-slate-600' : ''}`}>Podcasts</div>
+            <div className={`${contentType === 'podcast' ? 'font-bold text-slate-600' : ''}`}>{Customizations.literals.FilterShowPodcastsButton}</div>
           </div>
         </a>
         <div className='mb-1 ml-auto'>
           <button 
             className={`rounded-xl px-3 py-1 ${showFilters ? 'bg-slate-300 hover:bg-slate-100': 'hover:bg-slate-300'}`} 
             onClick={() => {setShowFilters(!showFilters); setShowCategories(false); setShowPublishers(false)}}
-          >Filter</button>
+          >{Customizations.literals.FilterButton}</button>
         </div>
       </div>
       {showFilters &&
