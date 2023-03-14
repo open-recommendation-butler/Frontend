@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GET } from '../../helpers/requests';
 
-function FilterSelection(query, contentType, category, publisher) {
+function FilterSelection({ query, contentType, category, publisher }) {
   const [showFilters, setShowFilters] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const [showPublishers, setShowPublishers] = useState(false);
@@ -14,7 +14,7 @@ function FilterSelection(query, contentType, category, publisher) {
       .then(response => setPublishers(publishers.concat(response.data)));
     GET('/category/')
       .then(response => setCategores(categories.concat(response.data)));
-  }, [publishers, categories]);
+  }, []);
 
   return (
     <>
