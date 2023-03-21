@@ -1,11 +1,13 @@
-# Web-GUI
+# ORB Frontend
 This is the web GUI for Open Recommendation Butler. It's a light React frontend to use in combination with the powerful search and recommendation backend ORB. 
 
-<a href="https://open-recommendation-butler.tech/">-> Live Demo</a>
+<a href="https://open-recommendation-butler.tech/"> 🌐 Demo</a>: Check out the power
 
 ## Requirements
 
 You need to have Node.js and npm installed on your machine to run the web GUI locally. More information here: [Downloading and installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/)
+
+You need the backend up and running. Learn more how to do that in some minutes here: <a href="https://open-recommendation-butler.github.io/orb-backend/">🔎 Backend</a>
 
 ## Available Scripts
 
