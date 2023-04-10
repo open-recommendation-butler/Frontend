@@ -17,15 +17,34 @@ function ProjectDescription() {
         </div>
       </div>
 
-      <div className="container mx-auto px-3 mb-20 pb-20">
-        <div className='grid md:grid-cols-2 rounded-2xl drop-shadow-lg bg-white overflow-hidden'>
-          <div className='px-8 pt-10 pb-5 rounded-2xl drop-shadow-lg bg-white overflow-hidden'>
-            <h3 className='text-2xl font-bold mb-3'>Structured search results thanks to AI</h3>
-            <p>Google shows how it works: People love Google for structured search results. Google uses topic modeling to group news articles in logical topics. With Open Recommendation Butler, you get this technology for free and open source.</p>
-          </div>
-          <div className='flex-col items-center py-5'>
-            <img className='' src={process.env.PUBLIC_URL + '/showcase_topic_modeling.png'} alt="Screenshot showing search results clustered in topics" />
-          </div>
+      <div className="container max-w-3xl mx-auto px-2 mb-20 pb-20">
+        <h3 className="text-2xl font-bold text-center mb-12">Increase page views and reader engagement<br />with an intuitive search experience</h3>
+        <div class="grid grid-cols-8">
+
+          <div className="font-bold text-2xl text-slate-600 border-b py-3">✓</div>
+          <div className="font-bold text-xl col-span-2 border-b py-3 text-slate-600">Semantic Search</div>
+          <div className="col-span-5 border-b py-3">Provide the results your audience is looking for no matter which synonym they use</div>
+
+
+          <div className="font-bold text-2xl text-slate-600 border-b py-3">✓</div>
+          <div className="font-bold text-xl col-span-2 border-b py-3 text-slate-600">Auto<wbr />complete</div>
+          <div className="col-span-5 border-b py-3">Anticipate what your audience is searching for as they type</div>
+
+          <div className="font-bold text-2xl text-slate-600 border-b py-3">✓</div>
+          <div className="font-bold text-xl col-span-2 border-b py-3 text-slate-600">Topic Modeling</div>
+          <div className="col-span-5 border-b py-3">Structure your search results with AI</div>
+
+          <div className="font-bold text-2xl text-slate-600 border-b py-3">✓</div>
+          <div className="font-bold text-xl col-span-2 border-b py-3 text-slate-600">Faceted Search</div>
+          <div className="col-span-5 border-b py-3">Let your audience filter the results on custom attributes - e.g. podcasts, videos and articles.</div>
+
+          <div className="font-bold text-2xl text-slate-600 border-b py-3">✓</div>
+          <div className="font-bold text-xl col-span-2 border-b py-3 text-slate-600">Boosting</div>
+          <div className="col-span-5 border-b py-3">Increase revenue by boosting specific content - e.g. paid articles.</div>
+
+          <div className="font-bold text-2xl text-slate-600 py-3">✓</div>
+          <div className="font-bold text-xl col-span-2 py-3 text-slate-600">Spell<wb />check</div>
+          <div className="col-span-5 py-3">Don't let spelling mistakes prevent your audience from finding what they are looking for.</div>
         </div>
       </div>
 
