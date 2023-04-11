@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-let DOMAIN = "http://localhost:8001";
-// let DOMAIN = "https://open-recommendation-butler.tech/api";
+// let DOMAIN = "http://localhost:8001";
+let DOMAIN = "https://api.open-recommendation-butler.tech/api";
 
 export async function GET(path) {
   return axios.get(`${DOMAIN}${path}`)
