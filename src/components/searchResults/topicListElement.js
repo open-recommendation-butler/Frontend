@@ -5,18 +5,18 @@ import { useSearchParams } from "react-router-dom";
 function TopicListElement({ topic }) {
   let [searchParams] = useSearchParams();
   const [showFull, setShowFull] = useState(false);
-
+  console.log('topic', topic)
   return (
-    <div className='mb-4 border-b border-slate-300 py-1'>
-      <p className='text-m font-bold'>{topic.keywords && topic.keywords.slice(0,3).map((keyword, index) => 
-        <>
-          {index !== 0 ? ', ' : ''}
-          <a className='hover:underline' href={`/search?q=${keyword}${searchParams.get('content_type') ? '&content_type=' + searchParams.get('content_type') : ''}${searchParams.get('publisher') ? '&publisher=' + searchParams.get('publisher') : ''}${searchParams.get('category') ? '&category=' + searchParams.get('category') : ''}`}>{keyword}</a>
-        </>
-      )}</p>
+    <div className='mb-4 border-b border-gray-400 py-1'>
       {topic.article_count && topic.article_count > 1
         ? 
           <>
+            <p className='text-m font-bold'>{topic.keywords && topic.keywords.slice(0,3).map((keyword, index) => 
+              <>
+                {index !== 0 ? ', ' : ''}
+                <a className='hover:underline' href={`/search?q=${keyword}${searchParams.get('content_type') ? '&content_type=' + searchParams.get('content_type') : ''}${searchParams.get('publisher') ? '&publisher=' + searchParams.get('publisher') : ''}${searchParams.get('category') ? '&category=' + searchParams.get('category') : ''}`}>{keyword}</a>
+              </>
+            )}</p>
             <div className='grid md:grid-cols-2 gap-x-5'>
               {topic.articles.slice(0,showFull ? 999 : 4).map(article => <ArticleListElement article={article} />)}
             </div>
