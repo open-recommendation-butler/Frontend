@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { GET } from '../../helpers/requests';
 import Customizations from '../../Customizations';
+import { useSearchParams } from "react-router-dom";
 
 function FilterSelection({ query, contentType, category, publisher }) {
+  const [searchParams] = useSearchParams();
   const [showFilters, setShowFilters] = useState(false);
   const [showCategories, setShowCategories] = useState(false);
   const [showPublishers, setShowPublishers] = useState(false);
@@ -11,6 +13,8 @@ function FilterSelection({ query, contentType, category, publisher }) {
 
   // Load portal and category selection
   useEffect(() => {
+    if (searchParams.get('category') || searchParams.get('publisher'))
+      setShowFilters(true);
     GET('/portal/')
       .then(response => setPublishers(publishers.concat(response.data)));
     GET('/category/')
